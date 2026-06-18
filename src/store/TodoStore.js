@@ -1,29 +1,54 @@
 import {create} from "zustand/react";
+import { persist } from "zustand/middleware";
 
 // todo 상태 저장소 생성
-export const useTodoStore = create((set) => ({
-    // 전역 관리할 상태값 배치
-    todos: [],
+export const useTodoStore = create(
+    // persist를 사용하여 zustand 상태관리의 영속성 유지
+    // 새로고침하면 휘발되는 정보도 저장되게함
+    persist(
+    (set) => ({
+        // 전역 관리할 상태값 배치
+        todos: [],
 
-    // todo 상태를 변경할 액션함수 배치
-    // set 함수로 상태값을 변경할 수 있음
-    // 콜백의 파라미터 state는 이전 상태값 모음 객체를 의미한다.
-    // 여기서는 todos 배열을 의미
-    addTodo: (todo) => set((state) => ({
-        todos: [...state.todos, {
-            id: Date.now(),
-            todo: todo,
-            done: false
-        }]
-    })),
+        // todo 상태를 변경할 액션함수 배치
+        // set 함수로 상태값을 변경할 수 있음
+        // 콜백의 파라미터 state는 이전 상태값 모음 객체를 의미한다.
+        // 여기서는 todos 배열을 의미
+        addTodo: (todo) => set((state) => ({
+            todos: [...state.todos, {
+                id: Date.now(),
+                todo: todo,
+                done: false,
+                priority: 'medium'
+            }]
+        })),
 
-    toggleTodo: (id) => set((state) => ({
-        todos: state.todos.map((t) =>
-            t.id === id ? { ...t, done: !t.done } : t
-        )
-    })),
+        toggleTodo: (id) => set((state) => ({
+            todos: state.todos.map((t) =>
+                t.id === id ? { ...t, done: !t.done } : t
+            )
+        })),
 
-    deleteTodo: (id) => set((state) => ({
-        todos: state.todos.filter((t) => t.id !== id)
-    }))
-}))
+        deleteTodo: (id) => set((state) => ({
+            todos: state.todos.filter((t) => t.id !== id)
+        })),
+
+        // 추가 기능 - todo 인라인 편집
+        editTodo: (id, text) => set((state) => ({
+            todos: state.todos.map((t) =>
+                t.id === id ? { ...t, todo: text } : t
+            )
+        })),
+
+        // 추가 기능 - 우선 순위 변경
+        setPriority: (id, priority) => set((state) => ({
+            todos: state.todos.map((t) => (
+                t.id === id ? {...t, priority} : t
+            ))
+        }))
+        }),
+        {
+            name: 'todo-storage',
+        }
+    )
+)
