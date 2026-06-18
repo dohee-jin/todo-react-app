@@ -3,7 +3,6 @@ import { useTodoStore } from "../store/TodoStore.js";
 import TodoItem from "../components/TodoItem.jsx";
 import TodoInput from "../components/TodoInput.jsx";
 import TodoHeader from "../components/TodoHeader.jsx";
-import WeatherWidget from "../components/WeatherWidget.jsx";
 
 const TodoPage = () => {
 
@@ -12,9 +11,6 @@ const TodoPage = () => {
     return (
         // addtodo 컴포넌트로 변경
         <>
-            <div className="absolute top-6 right-6">
-                <WeatherWidget />
-            </div>
             <TodoHeader length={todos.filter(todo => todo.done !== true).length}/>
             <div>
                 <TodoInput />

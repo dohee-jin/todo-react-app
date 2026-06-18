@@ -4,9 +4,9 @@ import { useWeatherStore } from '../store/weatherStore.js';
 
 const WeatherWidget = () => {
     // 상태
-    const {weather, isLoading, error, fetchWeather } = useWeatherStore;
+    const {weather, isLoading, error, fetchWeather } = useWeatherStore();
     // 기본값: 서울
-    const { city, setCity } = useState('Seoul');
+    const [ city, setCity ] = useState('Seoul');
 
     // useEffect로 컴포넌트 마운트 시 자동으로 도시, 날씨 조회되게 설정
     useEffect(() => {

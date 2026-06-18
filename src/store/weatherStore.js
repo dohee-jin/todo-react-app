@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export const weatherStore = create((set) => ({
+export const useWeatherStore = create((set) => ({
     // 상테
     weather: null,
     isLoading: false,
