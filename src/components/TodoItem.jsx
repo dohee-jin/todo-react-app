@@ -20,13 +20,13 @@ const TodoItem = ({todo}) => {
 
     // 추가 기능 구현 - 우선 순위 설정
     const priorityStyle = {
-        high: 'border-l-4 border-l-red-500',
-        medium: 'border-l-4 border-l-yellow-500',
-        low: 'border-l-4 border-l-green-500',
+        high: 'border-l-4 border-l-red-500 bg-red-50',
+        medium: 'border-l-4 border-l-yellow-500 bg-yellow-50',
+        low: 'border-l-4 border-l-green-500 bg-green-50',
     }
 
     return (
-        <li className={`flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-100 hover:shadow-md transition-shadow ${priorityStyle[priority]}`}>
+        <li className={`flex items-center gap-3 p-3 rounded-lg border border-gray-100 hover:shadow-md transition-shadow ${priorityStyle[priority]}`}>
             <input type="checkbox"
                    checked={done}
                    onChange={() => toggleTodo(id)}
