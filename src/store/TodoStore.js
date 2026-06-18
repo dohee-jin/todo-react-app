@@ -25,5 +25,12 @@ export const useTodoStore = create((set) => ({
 
     deleteTodo: (id) => set((state) => ({
         todos: state.todos.filter((t) => t.id !== id)
-    }))
+    })),
+
+    // 추가 기능 - todo 인라인 편집
+    editTodo: (id, text) => set((state) => ({
+        todos: state.todos.map((t) =>
+            t.id === id ? { ...t, todo: text } : t
+        )
+    })),
 }))
