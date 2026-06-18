@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTodoStore } from "../store/TodoStore.js";
 import TodoItem from "../components/TodoItem.jsx";
 import AddTodo from "../components/AddTodo.jsx";
+import TodoHeader from "../components/TodoHeader.jsx";
 
 const TodoPage = () => {
 
@@ -10,7 +11,7 @@ const TodoPage = () => {
     return (
         // addtodo 컴포넌트로 변경
         <>
-            <h1 className="text-2xl font-bold mb-4">My Task</h1>
+            <TodoHeader length={todos.filter(todo => todo.done !== true).length}/>
             <div>
                 <AddTodo />
                 <ul className="space-y-3">
