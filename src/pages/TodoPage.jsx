@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTodoStore } from "../store/TodoStore.js";
 import TodoItem from "../components/TodoItem.jsx";
-import AddTodo from "../components/AddTodo.jsx";
+import TodoInput from "../components/TodoInput.jsx";
 import TodoHeader from "../components/TodoHeader.jsx";
 
 const TodoPage = () => {
@@ -13,7 +13,7 @@ const TodoPage = () => {
         <>
             <TodoHeader length={todos.filter(todo => todo.done !== true).length}/>
             <div>
-                <AddTodo />
+                <TodoInput />
                 <ul className="space-y-3">
                     {todos.length > 0 ? (
                         todos.map((todo) => (

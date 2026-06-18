@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTodoStore } from "../store/TodoStore.js";
 
-const AddTodo = () => {
+const TodoInput = () => {
     const [input, setInput] = useState("");
     const addTodo = useTodoStore((state) => state.addTodo);
 
@@ -12,7 +12,7 @@ const AddTodo = () => {
     };
 
     return (
-        <div className="flex gap-2 p-4 bg-white rounded-lg shadow-sm border border-gray-200">
+        <div className="flex gap-2 p-4 bg-white rounded-lg shadow-sm border border-gray-200 mb-4">
             <input
                 type="text"
                 value={input}
