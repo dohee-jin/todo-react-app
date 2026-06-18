@@ -29,4 +29,4 @@ const TodoInput = () => {
 
 }
 
-export default AddTodo;
+export default TodoInput;

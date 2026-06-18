@@ -1,16 +1,16 @@
 import { create } from 'zustand';
 
-export const weatherStroe = create((set) => ({
+export const weatherStore = create((set) => ({
     // 상테
     weather: null,
     isLoading: false,
-    error: null
+    error: null,
 
     // api 요청
     fetchWeather: async (city) => {
         const API_KEY = import.meta.env.VITE_OPEN_WEATHER_KEY;
 
-        set({isLoading: ture, error: null});
+        set({isLoading: true, error: null});
 
         try {
             const res = await fetch(
@@ -27,9 +27,10 @@ export const weatherStroe = create((set) => ({
                     if (errData?.message) {
                         msg = `${res.status} ${errData.message}`;
                     }
-                } catch () {
-                    throw new Error(msg);
+                } catch  {
+
                 }
+                throw new Error(msg);
             }
 
             const data = await res.json();
