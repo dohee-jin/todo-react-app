@@ -18,9 +18,9 @@ export const useTodoStore = create((set) => ({
     })),
 
     toggleTodo: (id) => set((state) => ({
-        todos: state.todos.map((t) => {
-            t.id === id ? !state.t.done : todo
-        })
+        todos: state.todos.map((t) =>
+            t.id === id ? { ...t, done: !t.done } : t
+        )
     })),
 
     deleteTodo: (id) => set((state) => ({
