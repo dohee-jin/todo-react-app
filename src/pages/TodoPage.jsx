@@ -14,6 +14,7 @@ const TodoPage = () => {
     };
 
     return (
+        // addtodo 컴포넌트로 변경
         <div>
             <h1 className="text-2xl font-bold mb-4">Todo List</h1>
             <div className="flex gap-2 mb-4">
