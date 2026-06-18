@@ -1,9 +1,12 @@
 import React from "react";
-import styles from "./RootLayout.module.scss";
-import TodoPage from "./pages/TodoPage.jsx";
+import { Outlet } from "react-router-dom"
 
 const RootLayout = () => {
     return (
-        <TodoPage />
+        <div className="min-h-screen bg-gray-100">
+            <main className="mx-auto max-w-3xl p-6">
+                <Outlet />
+            </main>
+        </div>
     )
 }
